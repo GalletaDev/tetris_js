@@ -1,3 +1,3 @@
-Music background: GalletaDev
-languaje programming: Javascripts(JS) native, html, css
-sound arcarde: floraphonic https://pixabay.com/es/users/floraphonic-38928062/
+<p>Music background: GalletaDev</p>
+<p>languaje programming: Javascripts(JS) native, html, css</p>
+<p>sound arcarde: floraphonic</p> https://pixabay.com/es/users/floraphonic-38928062/
