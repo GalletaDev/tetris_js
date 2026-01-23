@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Divine Tetris</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- <h1>Divine Tetris</h1> -->
+    <canvas id="tetris" class="main-game" width="240" height="400"></canvas>
+
+
+    <div class="stats">
+
+        <h2>Points</h2>
+        <div id="score" class="box_text">0</div>
+        <h2>Record</h2>
+        <div id="high-score" class="box_text">0</div>
+        <h3>Next</h3>
+        <canvas id="next" width="200" height="200"></canvas>
+    </div>
+
+
+    <div id="game-over-overlay" class="hidden">
+        <h1>GAME OVER</h1>
+        <p id="final-score">Points total: 0</p>
+        <button id="restart-btn">Try again</button>
+    </div>
+
+    <script src="tetris.js"></script>
+</body>
+</html>
