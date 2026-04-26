@@ -15,8 +15,59 @@ body {
 .main-game {
     height: 85vh;
     width: auto;
-    border: solid 2px #fff;
+    /* border: solid 2px #fff; */
 }
+
+/* 1. El contenedor solo define el tamaño y la posición relativa */
+.game-container {
+    display: block;
+    position: relative;
+    display: inline-block;
+    padding: 5px; /* Este es el grosor de tu borde */
+}
+
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.game-container::before {
+    content: '';
+    position: absolute;
+    top: -5px; /* Ajustamos un poco para que cubra bien */
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 5px solid transparent;
+    border-radius: 10px; /* Si quieres bordes redondeados, aquí es donde van */
+    
+    /* Usamos var(--angle) en el gradiente */
+    background: conic-gradient(from var(--angle), #ff0000, #ff7300, #fffb00);
+    
+    /* Esto es lo que crea el "hueco" en el medio para que se vea el borde */
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    
+    /* Animamos la variable --angle, no el elemento */
+    animation: rotate-gradient 3s linear infinite;
+}
+
+@keyframes rotate-gradient {
+    from { --angle: 0deg; }
+    to { --angle: 360deg; }
+}
+
+.button_decoration {
+    padding: 5px;
+    background-color: #005567;
+    color: #fff;
+    border-radius: 25px;
+}
+
+
 
 /* .stats {
     display: flex;
@@ -34,6 +85,31 @@ h2, h3 {
     color: #fff;
 }
 
+.main-wrapper {
+    display: flex; /* Esto pone todo en fila */
+    align-items: center; /* Esto alinea el logo y el juego verticalmente al centro */
+    gap: 10px; /* Espacio entre el juego y el logo */
+    justify-content: center; /* Centra todo en la pantalla */
+    margin-top: -5px;
+}
+
+.logo-mark {
+    width: 96px; /* Ajusta el tamaño de tu logo aquí */
+    height: auto;
+    /* Si quieres darle un efecto visual */
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.423));
+}
+
+
+.text_hold {
+    color: #bb0095;
+}
+
+.text_next {
+    color: #b02525;
+}
+
+
 
 #next {
     width: 132px;  /* Tamaño visual en pantalla */
@@ -45,6 +121,18 @@ h2, h3 {
     image-rendering: pixelated;
 }
 
+#hold {
+    width: 132px;  /* Tamaño visual en pantalla */
+    height: 132px;
+    background-color: #000;
+    border: 2px solid #555;
+    margin-top: 10px;
+    /* Evita que herede escalas raras */
+    image-rendering: pixelated;
+}
+
+
+
 .box_text {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: #fff;
@@ -53,6 +141,12 @@ h2, h3 {
     background-color: #000;
     border: 2px solid #555;
     /* Evita que herede escalas raras */
+}
+
+
+.text_points {
+    font-family: 'Press Start 2P';
+    font-size: 18px;
 }
 
 
@@ -97,3 +191,43 @@ canvas {
     background: #ff4d4d;
     transform: scale(1.1);
 }
+
+/* ############################################# */
+
+.high-score-animado {
+    font-weight: bold;
+    /* Creamos un degradado largo para que tenga espacio para moverse */
+    background: linear-gradient(to right, #650bff, #ff00ea, #00d4ff, #650bff);
+    background-size: 200% auto;
+    
+    /* El truco mágico: el fondo solo se ve donde hay texto */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* Animación infinita */
+    animation: flow 2s linear infinite;
+}
+
+.phase_color_animation {
+    font-weight: bold;
+    /* Creamos un degradado largo para que tenga espacio para moverse */
+    background: linear-gradient(to right, #d1d800, #c16100, #c70000, #8c00f0);
+    background-size: 200% auto;
+    
+    /* El truco mágico: el fondo solo se ve donde hay texto */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* Animación infinita */
+    animation: flow 2s linear infinite;
+}
+
+
+
+@keyframes flow {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* ############################################# */

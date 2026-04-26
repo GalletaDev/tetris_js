@@ -4,22 +4,34 @@
     <meta charset="UTF-8">
     <title>Divine Tetris</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- <h1>Divine Tetris</h1> -->
-    <canvas id="tetris" class="main-game" width="240" height="400"></canvas>
+    <div class="main-wrapper">
+        <div class="game-container">
+            <canvas id="tetris" class="main-game" width="240" height="400"></canvas>
+        </div>
 
+    </div>
 
     <div class="stats">
 
+        <h2 id="phase_game" class="phase_color_animation">1</h2>
+
         <h2>Points</h2>
-        <div id="score" class="box_text">0</div>
+        <div id="score" class="box_text text_points">0</div>
         <h2>Record</h2>
-        <div id="high-score" class="box_text">0</div>
-        <h3>Next</h3>
+        <div id="high-score" class="box_text text_points high-score-animado">0</div>
+        <h3 class="text_next">Next</h3>
         <canvas id="next" width="200" height="200"></canvas>
+        <h3 class="text_hold">Hold</h3>
+        <canvas id="hold" width="200" height="200"></canvas>
+        <div><button id="btn-stop-music" class="button_decoration">🔇 Muted</button></div>
+        <img src="img/game_logo.png" alt="Logo Mark" class="logo-mark">
     </div>
 
+    
 
     <div id="game-over-overlay" class="hidden">
         <h1>GAME OVER</h1>
